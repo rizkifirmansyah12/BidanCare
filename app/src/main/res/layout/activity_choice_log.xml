@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ChoiceLog">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+    <TextView
+        android:layout_marginBottom="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CHOICE USER ACCESS"
+        android:gravity="center"/>
+    <Button
+        android:id="@+id/Bidan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="BIDAN"
+        android:layout_marginBottom="50dp"
+        android:onClick="bidan"/>
+
+    <Button
+        android:id="@+id/User"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="USER"
+        android:onClick="user"/>
+    <Button
+        android:layout_marginTop="50dp"
+        android:id="@+id/Admin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ADMINSTRATOR"
+        android:onClick="admin"/>
+</LinearLayout>
+</RelativeLayout>
