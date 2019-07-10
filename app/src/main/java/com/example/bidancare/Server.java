@@ -1,5 +1,5 @@
 package com.example.bidancare;
 
 public class Server {
-    public static final String URL = "http://172.19.102.64/apii/api/";
+    public static final String URL = "http://192.168.8.100/apii/api/";
 }

@@ -35,7 +35,7 @@ public class login_admin extends AppCompatActivity {
     int success;
     ConnectivityManager conMgr;
 
-    private String url = Server.URL + "login.php";
+    private String url = Server.URL + "login_admin.php";
 
     private static final String TAG = login_admin.class.getSimpleName();
 

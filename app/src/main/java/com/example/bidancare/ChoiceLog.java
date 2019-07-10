@@ -18,7 +18,9 @@ public class ChoiceLog extends AppCompatActivity {
     }
 
     public void user(View view) {
+        startActivity(new Intent(ChoiceLog.this,Home_user.class));
     }
+
 
     public void admin(View view) {
         startActivity(new Intent(ChoiceLog.this,login_admin.class));
