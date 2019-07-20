@@ -3,11 +3,11 @@ package com.example.bidancare;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.bidancare.BIDAN.MainActivity;
 
 public class Home extends AppCompatActivity {
 
@@ -26,11 +26,7 @@ public class Home extends AppCompatActivity {
         sharedpreferences = getSharedPreferences(MainActivity.my_shared_preferences, Context.MODE_PRIVATE);
 
         etusername = getIntent().getStringExtra(TAG_USERNAME);
-
-
-
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     public void logout(View view) {

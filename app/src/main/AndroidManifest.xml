@@ -13,9 +13,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Home_user"/>
-        <activity android:name=".Home_admin" />
-        <activity android:name=".login_admin" />
+        <activity android:name=".ADMIN.sign_admin"></activity>
+        <activity android:name=".BIDAN.Sign_bidan" />
+        <activity android:name=".ADMIN.Edit_form" />
+        <activity android:name=".ADMIN.form_admin" />
+        <activity android:name=".ADMIN.InputAdmin" />
+        <activity
+            android:name=".USER.Home_user"
+            android:label="@string/app_name" />
+        <activity android:name=".ADMIN.Home_admin" />
+        <activity android:name=".ADMIN.login_admin" />
         <activity android:name=".ChoiceLog" />
         <activity android:name=".Splash">
             <intent-filter>
@@ -25,8 +32,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Home" />
-        <activity android:name=".MainActivity"/>
-
+        <activity android:name=".BIDAN.MainActivity" />
     </application>
 
 </manifest>

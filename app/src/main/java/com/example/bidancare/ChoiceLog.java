@@ -5,6 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.bidancare.ADMIN.login_admin;
+import com.example.bidancare.BIDAN.MainActivity;
+import com.example.bidancare.USER.Home_user;
+
 public class ChoiceLog extends AppCompatActivity {
 
     @Override
@@ -14,15 +18,15 @@ public class ChoiceLog extends AppCompatActivity {
     }
 
     public void bidan(View view) {
-        startActivity(new Intent(ChoiceLog.this,MainActivity.class));
+        startActivity(new Intent(ChoiceLog.this, MainActivity.class));
     }
 
     public void user(View view) {
-        startActivity(new Intent(ChoiceLog.this,Home_user.class));
+        startActivity(new Intent(ChoiceLog.this, Home_user.class));
     }
 
 
     public void admin(View view) {
-        startActivity(new Intent(ChoiceLog.this,login_admin.class));
+        startActivity(new Intent(ChoiceLog.this, login_admin.class));
     }
 }
