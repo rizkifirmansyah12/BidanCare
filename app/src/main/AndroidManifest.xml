@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ADMIN.sign_admin"></activity>
+        <activity android:name=".ADMIN.Viewbidan"></activity>
+        <activity android:name=".USER.maps1" />
+        <activity android:name=".ADMIN.sign_admin" />
         <activity android:name=".BIDAN.Sign_bidan" />
         <activity android:name=".ADMIN.Edit_form" />
         <activity android:name=".ADMIN.form_admin" />

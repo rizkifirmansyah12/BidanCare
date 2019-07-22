@@ -1,4 +1,4 @@
-package com.example.bidancare.USER;
+package com.example.bidancare.ADMIN;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -17,9 +17,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.example.bidancare.BIDAN.MainActivity;
-import com.example.bidancare.ChoiceLog;
 import com.example.bidancare.R;
+import com.example.bidancare.USER.Home_user;
+import com.example.bidancare.USER.maps1;
 import com.example.bidancare.adapter.Adapter;
 import com.example.bidancare.app.AppController;
 import com.example.bidancare.data.Data;
@@ -31,7 +31,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Home_user extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
+public class Viewbidan extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener  {
+
     Toolbar toolbar;
     ListView list;
     SwipeRefreshLayout swipe;
@@ -44,7 +45,7 @@ public class Home_user extends AppCompatActivity implements SwipeRefreshLayout.O
 
     private static final String TAG = Home_user.class.getSimpleName();
 
-    private static String url_select = "http://192.168.8.100/bidancare/api/select.php";
+    private static String url_select = "http://192.168.8.100/bidancare/api/selectviewbidan.php";
 
     public static final String TAG_ID_bidan       = "id_bidan";
     public static final String TAG_NAMA_bidan     = "nama_bidan";
@@ -55,11 +56,10 @@ public class Home_user extends AppCompatActivity implements SwipeRefreshLayout.O
     private static final String TAG_MESSAGE = "message";
 
     String tag_json_obj = "json_obj_req";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_user);
+        setContentView(R.layout.activity_viewbidan);
 
 
         // menghubungkan variablel pada layout dan pada java
@@ -68,7 +68,7 @@ public class Home_user extends AppCompatActivity implements SwipeRefreshLayout.O
         list    = (ListView) findViewById(R.id.list);
 
         // untuk mengisi data dari JSON ke dalam adapter
-        adapter = new Adapter(Home_user.this, itemList);
+        adapter = new Adapter(Viewbidan.this, itemList);
         list.setAdapter(adapter);
 
         // menamilkan widget refresh
@@ -145,6 +145,7 @@ public class Home_user extends AppCompatActivity implements SwipeRefreshLayout.O
         // menambah request ke request queue
         AppController.getInstance().addToRequestQueue(jArr);
 
+
         list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 
             @Override
@@ -154,7 +155,7 @@ public class Home_user extends AppCompatActivity implements SwipeRefreshLayout.O
                 final String idbidan = itemList.get(position).getId_bidan();
 
                 final CharSequence[] dialogitem = {"Tampil"};
-                dialog = new AlertDialog.Builder(Home_user.this);
+                dialog = new AlertDialog.Builder(Viewbidan.this);
                 dialog.setCancelable(true);
                 dialog.setItems(dialogitem, new DialogInterface.OnClickListener() {
 
@@ -176,7 +177,10 @@ public class Home_user extends AppCompatActivity implements SwipeRefreshLayout.O
 
     }
     private void tampil(final String idbidan){
-        startActivity(new Intent(Home_user.this, maps1.class));
+        startActivity(new Intent(Viewbidan.this, form_admin.class));
     }
 
 }
+
+
+

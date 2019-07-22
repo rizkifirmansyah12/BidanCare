@@ -10,6 +10,8 @@ import android.widget.Button;
 
 import com.example.bidancare.BIDAN.MainActivity;
 import com.example.bidancare.R;
+import com.example.bidancare.USER.Home_user;
+import com.example.bidancare.USER.maps1;
 
 public class Home_admin extends AppCompatActivity {
     String  etusername;
@@ -43,5 +45,9 @@ public class Home_admin extends AppCompatActivity {
         Intent intent = new Intent(Home_admin.this, login_admin.class);
         finish();
         startActivity(intent);
+    }
+
+    public void list_bidan(View view) {
+        startActivity(new Intent(Home_admin.this, Viewbidan.class));
     }
 }
