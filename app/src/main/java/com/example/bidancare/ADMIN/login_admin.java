@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,8 +17,6 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.example.bidancare.BIDAN.MainActivity;
-import com.example.bidancare.ChoiceLog;
 import com.example.bidancare.R;
 import com.example.bidancare.Server;
 import com.example.bidancare.app.AppController;
@@ -83,7 +81,7 @@ public class login_admin extends AppCompatActivity {
         username = sharedpreferences.getString(TAG_USERNAME, null);
 
         if (session) {
-            Intent intent = new Intent(login_admin.this, Home_admin.class);
+            Intent intent = new Intent(login_admin.this, screen_home2.class);
             intent.putExtra(TAG_USERNAME, username);
             finish();
             startActivity(intent);
@@ -151,7 +149,7 @@ public class login_admin extends AppCompatActivity {
                         editor.commit();
 
                         // Memanggil main activity
-                        Intent intent = new Intent(login_admin.this, Home_admin.class);
+                        Intent intent = new Intent(login_admin.this, screen_home2.class);
                         intent.putExtra(TAG_USERNAME, username);
                         finish();
                         startActivity(intent);

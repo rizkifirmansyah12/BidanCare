@@ -2,18 +2,21 @@ package com.example.bidancare.data;
 
 public class Data {
 
-        private String id_bidan, nama_bidan, alamat_bidan, alamat_praktek, bidan_wilayah,verifkasi;
+        private String id, id_bidan, nama_bidan, alamat_bidan, alamat_praktek, bidan_wilayah,verifkasi,lat,lng;
 
         public Data() {
         }
 
-        public Data(String id_bidan, String nama_bidan, String alamat_bidan, String alamat_praktek, String bidan_wilayah, String verifikasi) {
+        public Data(String id, String id_bidan, String nama_bidan, String alamat_bidan, String alamat_praktek, String bidan_wilayah, String verifikasi, String lat, String lng) {
+            this.id = id;
             this.id_bidan = id_bidan;
             this.nama_bidan = nama_bidan;
             this.alamat_bidan = alamat_bidan;
             this.alamat_praktek = alamat_praktek;
             this.bidan_wilayah = bidan_wilayah;
             this.verifkasi=verifikasi;
+            this.lat = lat;
+            this.lng=lng;
         }
 
         public String getId_bidan() {
@@ -62,5 +65,23 @@ public class Data {
     public void setverifkasi(String verifkasi) {
         this.verifkasi = verifkasi;
     }
+
+    public String getlat() {
+        return lat;
+    }
+
+    public void setlat(String lat) {
+        this.lat = lat;
+    }
+
+
+    public String getlng() {
+        return lng;
+    }
+
+    public void setlng(String lng) {
+        this.lng = lng;
+    }
+
     }
 

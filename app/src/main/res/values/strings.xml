@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">BidanCare</string>
     <string name="Password">Password</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="message">Message...</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="latitude">latitude</string>
+    <string name="longitude">longitude</string>
+    <string name="id_bidan">id_bidan</string>
 </resources>

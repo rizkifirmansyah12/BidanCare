@@ -2,9 +2,9 @@ package com.example.bidancare.ADMIN;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -45,7 +45,7 @@ public class Viewbidan extends AppCompatActivity implements SwipeRefreshLayout.O
 
     private static final String TAG = Home_user.class.getSimpleName();
 
-    private static String url_select = "http://192.168.8.100/bidancare/api/selectviewbidan.php";
+    private static String url_select = "http://192.168.8.102/bidancare/api/selectviewbidan.php";
 
     public static final String TAG_ID_bidan       = "id_bidan";
     public static final String TAG_NAMA_bidan     = "nama_bidan";
@@ -152,8 +152,7 @@ public class Viewbidan extends AppCompatActivity implements SwipeRefreshLayout.O
             public boolean onItemLongClick(final AdapterView<?> parent, View view,
                                            final int position, long id_bidan) {
                 // TODO Auto-generated method stub
-                final String idbidan = itemList.get(position).getId_bidan();
-
+                final String idbidan1 = itemList.get(position).getId_bidan();
                 final CharSequence[] dialogitem = {"Tampil"};
                 dialog = new AlertDialog.Builder(Viewbidan.this);
                 dialog.setCancelable(true);
@@ -164,7 +163,9 @@ public class Viewbidan extends AppCompatActivity implements SwipeRefreshLayout.O
                         // TODO Auto-generated method stub
                         switch (which) {
                             case 0:
-                                tampil(idbidan);
+                                Intent intent = new Intent(Viewbidan.this, form_admin.class);
+                                intent.putExtra("id_bidan", idbidan1);
+                                startActivity(intent);
                                 break;
 
                         }

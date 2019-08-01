@@ -2,18 +2,27 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.bidancare">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:name=".app.AppController"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/bidancare"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".ADMIN.Viewbidan"></activity>
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".profile"></activity>
+        <activity android:name=".ADMIN.screen_home2" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAmRlw9IANr5o3lWZvN8uXe42I-57zCxC8" />
+
+        <activity android:name=".BIDAN.ScreenHome" />
+        <activity android:name=".ADMIN.Viewbidan" />
         <activity android:name=".USER.maps1" />
         <activity android:name=".ADMIN.sign_admin" />
         <activity android:name=".BIDAN.Sign_bidan" />
@@ -35,6 +44,10 @@
         </activity>
         <activity android:name=".Home" />
         <activity android:name=".BIDAN.MainActivity" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
     </application>
 
 </manifest>

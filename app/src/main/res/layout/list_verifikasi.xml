@@ -6,7 +6,7 @@
         android:id="@+id/listver"
         android:textSize="20dp"
         android:textStyle="bold"
-        android:text="Pendidikan"
+        android:text="Verifikasi"
         android:layout_margin="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

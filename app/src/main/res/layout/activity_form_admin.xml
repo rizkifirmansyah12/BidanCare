@@ -10,6 +10,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical" >
+        <EditText
+            android:id="@+id/id_bidan"
+            android:visibility="gone"
+            android:text="@string/id_bidan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/editbox_background_normal"/>
         <!-- Name Label -->
         <TextView android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -50,19 +57,26 @@
             android:paddingTop="10dip"
             android:textSize="17dip"/>
         <!-- Input description -->
-        <Spinner
-            android:id="@+id/spinner_pendidikan"
+        <RadioGroup
+            android:id="@+id/rdverifikasi"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/txt_hasil"
-            android:layout_marginTop="10dp"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Verifikasi : -" />
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rd1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Belum Verifikasi"
+                android:layout_gravity="center"/>
+
+            <RadioButton
+                android:id="@+id/rd2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:text="Verifikasi" />
+        </RadioGroup>
 
         <Button android:id="@+id/btnverifikasi"
             android:layout_width="fill_parent"

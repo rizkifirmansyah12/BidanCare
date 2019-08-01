@@ -1,19 +1,26 @@
 package com.example.bidancare.ADMIN;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.app.ProgressDialog;
-import android.content.Intent;
-import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
+import android.widget.AdapterView;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.bidancare.R;
+import com.example.bidancare.adapter.Adapter;
+import com.example.bidancare.app.AppController;
+import com.example.bidancare.data.Data;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -26,5 +33,9 @@ public class form_admin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form_admin);
+        TextView idbidan = (TextView) findViewById(R.id.id_bidan);
+        String TempHolder = getIntent().getStringExtra("id_bidan");
+        idbidan.setText(TempHolder);
     }
+
 }
