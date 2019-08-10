@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -58,7 +59,7 @@ public class maps1 extends AppCompatActivity/*FragmentActivity implements OnMapR
     Uri gmmIntentUri;
     Intent mapIntent;
     /*String masjid_agung_demak = "-6.894649906672214,110.63718136399984";*/
-    String $a,$b;
+    String a,b;
     String c;
     // koordinat Masjid Agung Demak
     /*Deklarasi variable*/
@@ -70,16 +71,19 @@ public class maps1 extends AppCompatActivity/*FragmentActivity implements OnMapR
         TextView idbidan = (TextView) findViewById(R.id.id_bidan);
         TextView lat = (TextView) findViewById(R.id.lat);
         TextView lng = (TextView) findViewById(R.id.lng);
+        TextView test = (TextView) findViewById(R.id.test);
         String TempHolder = getIntent().getStringExtra("id_bidan");
         idbidan.setText(TempHolder);
         String TempHolder1 = getIntent().getStringExtra("lat");
         lat.setText(TempHolder1);
         String TempHolder2 = getIntent().getStringExtra("lng");
         lng.setText(TempHolder2);
-        $a = getString(R.string.latitude);
-        $b = getString(R.string.longitude);
+        a= TempHolder1;
+        b = TempHolder2;
 
-        c=$a+","+$b;
+
+        c=  a+','+b;
+        test.setText(c);
 /*
         TextView idbidan = (TextView) findViewById(R.id.id_bidan);
         TextView lat = (TextView) findViewById(R.id.lat);

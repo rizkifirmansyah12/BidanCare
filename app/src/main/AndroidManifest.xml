@@ -14,14 +14,16 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".profile"></activity>
-        <activity android:name=".ADMIN.screen_home2" />
+        <activity android:name=".screenHomeuser"></activity>
+        <activity android:name=".loginVer2" />
+        <activity android:name=".profile" />
+        <activity android:name=".screen_home2" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAmRlw9IANr5o3lWZvN8uXe42I-57zCxC8" />
 
-        <activity android:name=".BIDAN.ScreenHome" />
+        <activity android:name=".ScreenHome" />
         <activity android:name=".ADMIN.Viewbidan" />
         <activity android:name=".USER.maps1" />
         <activity android:name=".ADMIN.sign_admin" />

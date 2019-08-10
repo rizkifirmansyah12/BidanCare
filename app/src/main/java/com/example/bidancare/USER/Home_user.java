@@ -5,6 +5,8 @@ import android.content.Intent;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -40,7 +42,8 @@ public class Home_user extends AppCompatActivity implements SwipeRefreshLayout.O
     AlertDialog.Builder dialog;
     LayoutInflater inflater;
     View dialogView;
-
+    String lat,lng;
+    SharedPreferences sharedpreferences;
     private static final String TAG = Home_user.class.getSimpleName();
 
     private static String url_select = "http://192.168.8.102/bidancare/api/select.php";

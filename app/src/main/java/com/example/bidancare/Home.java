@@ -18,15 +18,15 @@ public class Home extends AppCompatActivity {
     public static final String TAG_ID = "id";
     public static final String TAG_USERNAME = "username";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        sharedpreferences = getSharedPreferences(MainActivity.my_shared_preferences, Context.MODE_PRIVATE);
-
+        sharedpreferences = getSharedPreferences(loginVer2.my_shared_preferences, Context.MODE_PRIVATE);
         etusername = getIntent().getStringExtra(TAG_USERNAME);
-getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+/*        getSupportActionBar().setDisplayHomeAsUpEnabled(true);*/
     }
 
     public void logout(View view) {
@@ -37,7 +37,7 @@ getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             editor.putString(TAG_USERNAME, null);
             editor.commit();
 
-            Intent intent = new Intent(Home.this, MainActivity.class);
+            Intent intent = new Intent(Home.this, loginVer2.class);
             finish();
             startActivity(intent);
 

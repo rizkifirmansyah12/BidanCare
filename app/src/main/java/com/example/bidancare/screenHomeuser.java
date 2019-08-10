@@ -1,19 +1,18 @@
-package com.example.bidancare.BIDAN;
+package com.example.bidancare;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 
-import com.example.bidancare.R;
+import com.example.bidancare.ADMIN.Viewbidan;
+import com.example.bidancare.BIDAN.MainActivity;
+import com.example.bidancare.USER.Home_user;
 
-public class ScreenHome extends AppCompatActivity {
-
+public class screenHomeuser extends AppCompatActivity {
 
     String  etusername;
     SharedPreferences sharedpreferences;
@@ -24,31 +23,26 @@ public class ScreenHome extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_screen_home);
-
-        sharedpreferences = getSharedPreferences(MainActivity.my_shared_preferences, Context.MODE_PRIVATE);
+        setContentView(R.layout.activity_screen_homeuser);
+        sharedpreferences = getSharedPreferences(loginVer2.my_shared_preferences, Context.MODE_PRIVATE);
 
         etusername = getIntent().getStringExtra(TAG_USERNAME);
 
     }
 
-
-
-
+    public void listbidan(View view) {
+        startActivity(new Intent(screenHomeuser.this, Home_user.class));
+    }
 
     public void logout(View view) {
-
         SharedPreferences.Editor editor = sharedpreferences.edit();
         editor.putBoolean(MainActivity.session_status, false);
         editor.putString(TAG_ID, null);
         editor.putString(TAG_USERNAME, null);
         editor.commit();
 
-        Intent intent = new Intent(ScreenHome.this, MainActivity.class);
+        Intent intent = new Intent(screenHomeuser.this, loginVer2.class);
         finish();
         startActivity(intent);
-
-
     }
-
 }

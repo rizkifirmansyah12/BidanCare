@@ -1,26 +1,28 @@
-package com.example.bidancare.ADMIN;
+package com.example.bidancare;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.example.bidancare.R;
-import com.example.bidancare.Server;
+import com.example.bidancare.BIDAN.MainActivity;
+import com.example.bidancare.USER.Home_user;
 import com.example.bidancare.app.AppController;
-
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -28,8 +30,10 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class login_admin extends AppCompatActivity {
+public class loginVer2 extends AppCompatActivity {
 
+   /* private RadioGroup radiogrup;
+    private RadioButton radioButtonNb;*/
     ProgressDialog pDialog;
     Button btlogin;
     EditText etusername, etpassword;
@@ -38,14 +42,16 @@ public class login_admin extends AppCompatActivity {
     int success;
     ConnectivityManager conMgr;
 
-    private String url = Server.URL + "login_admin.php";
+    private String url = Server.URL + "loginver2.php";
 
-    private static final String TAG = login_admin.class.getSimpleName();
+    private static final String TAG = loginVer2.class.getSimpleName();
 
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
 
     public final static String TAG_USERNAME = "username";
+    public final static String TAG_Hakakses = "id_grup";
+
 
 
     String tag_json_obj = "json_obj_req";
@@ -59,8 +65,10 @@ public class login_admin extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_admin);
-/*
+        setContentView(R.layout.activity_login_ver2);
+        /*radiogrup = (RadioGroup) findViewById(R.id.rdgrup);*/
+
+
         conMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         {
             if (conMgr.getActiveNetworkInfo() != null
@@ -81,12 +89,12 @@ public class login_admin extends AppCompatActivity {
 
         username = sharedpreferences.getString(TAG_USERNAME, null);
 
-        if (session) {
-            Intent intent = new Intent(login_admin.this, screen_home2.class);
+       /* if (session) {
+            Intent intent = new Intent(loginVer2.this, Home.class);
             intent.putExtra(TAG_USERNAME, username);
             finish();
             startActivity(intent);
-        }
+        }*/
 
 
         btlogin.setOnClickListener(new View.OnClickListener() {
@@ -95,6 +103,13 @@ public class login_admin extends AppCompatActivity {
 
             public void onClick(View v) {
                 // TODO Auto-generated method stub
+                //pilih radio button yang ada di radio button group
+                /*int selectedId = radiogrup.getCheckedRadioButtonId();
+
+                // mencari radio button
+                radioButtonNb = (RadioButton) findViewById(selectedId);
+
+                String hakakses = radioButtonNb.getText().toString();*/
                 String username = etusername.getText().toString();
                 String password = etpassword.getText().toString();
 
@@ -103,7 +118,7 @@ public class login_admin extends AppCompatActivity {
                     if (conMgr.getActiveNetworkInfo() != null
                             && conMgr.getActiveNetworkInfo().isAvailable()
                             && conMgr.getActiveNetworkInfo().isConnected()) {
-                        checkLogin(username, password);
+                        checkLogin(username, password);//hakakses);
                     } else {
                         Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_LONG).show();
                     }
@@ -116,6 +131,7 @@ public class login_admin extends AppCompatActivity {
 
 
     }
+
 
     private void checkLogin(final String username, final String password) {
         pDialog = new ProgressDialog(this);
@@ -137,6 +153,7 @@ public class login_admin extends AppCompatActivity {
                     // Check for error node in json
                     if (success == 1) {
                         String username = jObj.getString(TAG_USERNAME);
+                        /*String hakakses = jObj.getString(TAG_Hakakses);*/
 
                         Log.e("Successfully Login!", jObj.toString());
 
@@ -147,14 +164,62 @@ public class login_admin extends AppCompatActivity {
                         editor.putBoolean(session_status, true);
 
                         editor.putString(TAG_USERNAME, username);
+                        //editor.putString(TAG_Hakakses, hakakses);
                         editor.commit();
 
                         // Memanggil main activity
-                        Intent intent = new Intent(login_admin.this, screen_home2.class);
+                        Intent intent = new Intent(loginVer2.this, screenHomeuser.class);
                         intent.putExtra(TAG_USERNAME, username);
+                        //intent.putExtra(TAG_Hakakses, hakakses);
                         finish();
                         startActivity(intent);
-                    } else {
+                    } else if (success == 2){
+
+                            String username = jObj.getString(TAG_USERNAME);
+                            /*String hakakses = jObj.getString(TAG_Hakakses);*/
+
+                            Log.e("Successfully Login!", jObj.toString());
+
+                            Toast.makeText(getApplicationContext(), jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
+
+                            // menyimpan login ke session
+                            SharedPreferences.Editor editor = sharedpreferences.edit();
+                            editor.putBoolean(session_status, true);
+
+                            editor.putString(TAG_USERNAME, username);
+                            //editor.putString(TAG_Hakakses, hakakses);
+                            editor.commit();
+
+                            // Memanggil main activity
+                            Intent intent = new Intent(loginVer2.this, ScreenHome.class);
+                            intent.putExtra(TAG_USERNAME, username);
+                            //intent.putExtra(TAG_Hakakses, hakakses);
+                            finish();
+                            startActivity(intent);
+                    }else if (success==3){
+
+                            String username = jObj.getString(TAG_USERNAME);
+                            /*String hakakses = jObj.getString(TAG_Hakakses);*/
+
+                            Log.e("Successfully Login!", jObj.toString());
+
+                            Toast.makeText(getApplicationContext(), jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
+
+                            // menyimpan login ke session
+                            SharedPreferences.Editor editor = sharedpreferences.edit();
+                            editor.putBoolean(session_status, true);
+
+                            editor.putString(TAG_USERNAME, username);
+                            //editor.putString(TAG_Hakakses, hakakses);
+                            editor.commit();
+
+                            // Memanggil main activity
+                            Intent intent = new Intent(loginVer2.this, screen_home2.class);
+                            intent.putExtra(TAG_USERNAME, username);
+                            //intent.putExtra(TAG_Hakakses, hakakses);
+                            finish();
+                            startActivity(intent);
+                    }else {
                         Toast.makeText(getApplicationContext(),
                                 jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
 
@@ -184,6 +249,7 @@ public class login_admin extends AppCompatActivity {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("username", username);
                 params.put("password", password);
+                //params.put("id_grup", hakakses);
 
                 return params;
             }
@@ -205,8 +271,7 @@ public class login_admin extends AppCompatActivity {
             pDialog.dismiss();
     }
 
-    public void sign(View view) {
-        startActivity(new Intent(login_admin.this, sign_admin.class));
-    }*/
+
+    public void signup(View view) {startActivity(new Intent(loginVer2.this, ChoiceLog.class));
     }
 }
