@@ -135,7 +135,7 @@ public class maps1 extends AppCompatActivity/*FragmentActivity implements OnMapR
 
                     try {
                         JSONObject jObj = new JSONObject(response);
-                        String getObject = jObj.getString("bidans");
+                        String getObject = jObj.getString("ModelDataBidans");
                         JSONArray jsonArray = new JSONArray(getObject);
 
                         for (int i = 0; i < jsonArray.length(); i++) {

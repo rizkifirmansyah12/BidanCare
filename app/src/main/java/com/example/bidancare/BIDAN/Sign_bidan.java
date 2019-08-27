@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import com.example.bidancare.loginVer2;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -75,7 +76,7 @@ public class Sign_bidan extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                intent = new Intent(Sign_bidan.this, MainActivity.class);
+                intent = new Intent(Sign_bidan.this, loginVer2.class);
                 finish();
                 startActivity(intent);
             }

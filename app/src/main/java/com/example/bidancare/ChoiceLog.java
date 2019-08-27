@@ -5,9 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.bidancare.ADMIN.login_admin;
-import com.example.bidancare.ADMIN.sign_admin;
-import com.example.bidancare.BIDAN.MainActivity;
 import com.example.bidancare.BIDAN.Sign_bidan;
 import com.example.bidancare.USER.Home_user;
 
@@ -23,12 +20,7 @@ public class ChoiceLog extends AppCompatActivity {
         startActivity(new Intent(ChoiceLog.this, Sign_bidan.class));
     }
 
-    public void user(View view) {
-        startActivity(new Intent(ChoiceLog.this, Home_user.class));
-    }
-
-
     public void admin(View view) {
-        startActivity(new Intent(ChoiceLog.this, sign_admin.class));
+        startActivity(new Intent(ChoiceLog.this, sign_admin_user.class));
     }
 }

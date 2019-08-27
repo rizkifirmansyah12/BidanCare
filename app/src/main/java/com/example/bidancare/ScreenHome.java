@@ -9,9 +9,10 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.bidancare.BIDAN.MainActivity;
+import com.example.bidancare.Manager.SessionManager;
 
 public class ScreenHome extends AppCompatActivity {
-
+    SessionManager sessionManager;
 
     String  etusername;
     SharedPreferences sharedpreferences;
@@ -35,8 +36,7 @@ public class ScreenHome extends AppCompatActivity {
 
 
     public void logout(View view) {
-
-        SharedPreferences.Editor editor = sharedpreferences.edit();
+/*        SharedPreferences.Editor editor = sharedpreferences.edit();
         editor.putBoolean(MainActivity.session_status, false);
         editor.putString(TAG_ID, null);
         editor.putString(TAG_USERNAME, null);
@@ -44,9 +44,20 @@ public class ScreenHome extends AppCompatActivity {
 
         Intent intent = new Intent(ScreenHome.this, loginVer2.class);
         finish();
+        startActivity(intent);*/
+        sessionManager.logout ();
+        Intent intent = new Intent(ScreenHome.this, loginVer2.class);
+        finish();
         startActivity(intent);
+
 
 
     }
 
+
+    public void profile(View view) {
+        Intent intent = new Intent(ScreenHome.this, profile.class);
+        finish();
+        startActivity(intent);
+    }
 }

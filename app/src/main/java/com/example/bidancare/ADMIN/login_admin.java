@@ -206,7 +206,7 @@ public class login_admin extends AppCompatActivity {
     }
 
     public void sign(View view) {
-        startActivity(new Intent(login_admin.this, sign_admin.class));
+        startActivity(new Intent(login_admin.this, sign_admin_user.class));
     }*/
     }
 }

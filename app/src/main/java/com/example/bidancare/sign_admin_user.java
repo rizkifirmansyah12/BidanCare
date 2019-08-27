@@ -1,4 +1,4 @@
-package com.example.bidancare.ADMIN;
+package com.example.bidancare;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -10,14 +10,15 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.example.bidancare.R;
-import com.example.bidancare.Server;
+import com.example.bidancare.ADMIN.login_admin;
 import com.example.bidancare.app.AppController;
 
 import org.json.JSONException;
@@ -26,8 +27,10 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class sign_admin extends AppCompatActivity {
+public class sign_admin_user extends AppCompatActivity {
 
+    private RadioGroup radiogrup;
+    private RadioButton radioButtonNb;
     ProgressDialog pDialog;
     Button btn_register, btn_login;
     EditText txt_username, txt_password, txt_confirm_password;
@@ -37,8 +40,9 @@ public class sign_admin extends AppCompatActivity {
     ConnectivityManager conMgr;
 
     private String url = Server.URL + "registrasi_admin.php";
+    public final static String TAG_Hakakses = "id_grup";
 
-    private static final String TAG = sign_admin.class.getSimpleName();
+    private static final String TAG = sign_admin_user.class.getSimpleName();
 
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
@@ -48,6 +52,9 @@ public class sign_admin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_admin);
+
+        radiogrup = (RadioGroup) findViewById(R.id.rdgrup);
+
         conMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         {
             if (conMgr.getActiveNetworkInfo() != null
@@ -70,7 +77,7 @@ public class sign_admin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                intent = new Intent(sign_admin.this, login_admin.class);
+                intent = new Intent(sign_admin_user.this, loginVer2.class);
                 finish();
                 startActivity(intent);
             }
@@ -85,10 +92,18 @@ public class sign_admin extends AppCompatActivity {
                 String password = txt_password.getText().toString();
                 String confirm_password = txt_confirm_password.getText().toString();
 
+                //pilih radio button yang ada di radio button group
+                int selectedId = radiogrup.getCheckedRadioButtonId();
+
+                // mencari radio button
+                radioButtonNb = (RadioButton) findViewById(selectedId);
+
+                String hakakses = radioButtonNb.getText().toString();
+
                 if (conMgr.getActiveNetworkInfo() != null
                         && conMgr.getActiveNetworkInfo().isAvailable()
                         && conMgr.getActiveNetworkInfo().isConnected()) {
-                    checkRegister(username, password, confirm_password);
+                    checkRegister(username, password, confirm_password,hakakses);
                 } else {
                     Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_SHORT).show();
                 }
@@ -97,7 +112,7 @@ public class sign_admin extends AppCompatActivity {
 
     }
 
-    private void checkRegister(final String username, final String password, final String confirm_password) {
+    private void checkRegister(final String username, final String password, final String confirm_password, final String hakakses) {
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
         pDialog.setMessage("Register ...");
@@ -116,7 +131,7 @@ public class sign_admin extends AppCompatActivity {
 
                     // Check for error node in json
                     if (success == 1) {
-
+                        //String hakakses = jObj.getString(TAG_Hakakses);
                         Log.e("Successfully Register!", jObj.toString());
 
                         Toast.makeText(getApplicationContext(),
@@ -125,6 +140,7 @@ public class sign_admin extends AppCompatActivity {
                         txt_username.setText("");
                         txt_password.setText("");
                         txt_confirm_password.setText("");
+                        radioButtonNb.setText("");
 
                     } else {
                         Toast.makeText(getApplicationContext(),
@@ -157,6 +173,7 @@ public class sign_admin extends AppCompatActivity {
                 params.put("username", username);
                 params.put("password", password);
                 params.put("confirm_password", confirm_password);
+                params.put("id_grup",hakakses);
 
                 return params;
             }
@@ -179,7 +196,7 @@ public class sign_admin extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        intent = new Intent(sign_admin.this, login_admin.class);
+        intent = new Intent(sign_admin_user.this, login_admin.class);
         finish();
         startActivity(intent);
     }

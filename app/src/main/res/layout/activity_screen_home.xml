@@ -57,7 +57,9 @@
                     <ImageButton
                         android:layout_width="120dp"
                         android:layout_height="120dp"
-                        android:background="@drawable/profile" />
+                        android:background="@drawable/profile"
+                        android:onClick="profile"
+                        />
 
 
                 </LinearLayout>
@@ -95,7 +97,7 @@
 
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:background="@drawable/logout"
+                android:background="@drawable/logoutver2"
                 android:onClick="logout"/>
         </LinearLayout>
 

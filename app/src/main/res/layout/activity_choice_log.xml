@@ -7,16 +7,23 @@
     tools:context=".ChoiceLog"
     android:background="@drawable/bg">
 <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_marginTop="120dp"
+    android:id="@+id/layoutInput"
+    android:layout_marginRight="20dp"
+    android:layout_marginLeft="20dp"
+    android:layout_centerHorizontal="true"
+    android:background="@drawable/background_white"
+    android:padding="20dp"
     android:orientation="vertical"
-    android:gravity="center">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
     <TextView
         android:layout_marginBottom="50dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="CHOICE USER ACCESS"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textStyle="bold"/>
     <Button
         android:id="@+id/Bidan"
         android:layout_width="match_parent"
@@ -24,22 +31,17 @@
         android:text="BIDAN"
         android:layout_marginBottom="50dp"
         android:onClick="bidan"
-        android:background="@drawable/button1"/>
+        android:textColor="#fff"
+        android:background="@drawable/rec_gradient"/>
 
-    <Button
-        android:id="@+id/User"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="USER"
-        android:onClick="user"
-        android:background="@drawable/button2"/>
     <Button
         android:layout_marginTop="50dp"
         android:id="@+id/Admin"
+        android:textColor="#fff"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ADMINSTRATOR"
+        android:text="ADMINSTRATOR OR USER"
         android:onClick="admin"
-        android:background="@drawable/button1"/>
+        android:background="@drawable/rec_gradient_fb"/>
 </LinearLayout>
 </RelativeLayout>

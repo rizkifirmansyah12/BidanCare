@@ -10,16 +10,17 @@ import android.widget.Button;
 
 import com.example.bidancare.BIDAN.MainActivity;
 import com.example.bidancare.R;
+import com.example.bidancare.loginVer2;
 
 public class Home_admin extends AppCompatActivity {
-    String  etusername;
+    String  etusername,id;
     SharedPreferences sharedpreferences;
 
     Button btnViewProducts;
     Button btnNewProduct;
 
 
-    public static final String TAG_ID = "id";
+    public static final String TAG_ID = "id_login";
     public static final String TAG_USERNAME = "username";
 
     @Override
@@ -27,7 +28,8 @@ public class Home_admin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_admin);
 
-        sharedpreferences = getSharedPreferences(MainActivity.my_shared_preferences, Context.MODE_PRIVATE);
+        sharedpreferences = getSharedPreferences(loginVer2.my_shared_preferences, Context.MODE_PRIVATE);
+        id = getIntent().getStringExtra(TAG_ID);
         etusername = getIntent().getStringExtra(TAG_USERNAME);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -35,7 +37,7 @@ public class Home_admin extends AppCompatActivity {
 
     public void logout(View view) {
         SharedPreferences.Editor editor = sharedpreferences.edit();
-        editor.putBoolean(MainActivity.session_status, false);
+        editor.putBoolean(loginVer2.session_status, false);
         editor.putString(TAG_ID, null);
         editor.putString(TAG_USERNAME, null);
         editor.commit();

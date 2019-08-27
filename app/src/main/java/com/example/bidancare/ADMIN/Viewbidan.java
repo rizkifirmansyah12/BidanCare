@@ -1,16 +1,20 @@
 package com.example.bidancare.ADMIN;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.android.volley.Response;
@@ -23,6 +27,7 @@ import com.example.bidancare.USER.maps1;
 import com.example.bidancare.adapter.Adapter;
 import com.example.bidancare.app.AppController;
 import com.example.bidancare.data.Data;
+import com.example.bidancare.loginVer2;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -42,6 +47,8 @@ public class Viewbidan extends AppCompatActivity implements SwipeRefreshLayout.O
     AlertDialog.Builder dialog;
     LayoutInflater inflater;
     View dialogView;
+    String id;
+    SharedPreferences sharedpreferences;
 
     private static final String TAG = Home_user.class.getSimpleName();
 
@@ -55,13 +62,20 @@ public class Viewbidan extends AppCompatActivity implements SwipeRefreshLayout.O
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
 
+    public static final String TAG_ID = "id_login";
+    public static final String TAG_USERNAME = "username";
     String tag_json_obj = "json_obj_req";
+    public static final String my_shared_preferences = "my_shared_preferences";
+    public static final String session_status = "session_status";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_viewbidan);
 
-
+        sharedpreferences = getSharedPreferences(loginVer2.my_shared_preferences, Context.MODE_PRIVATE);
+        id = getIntent().getStringExtra(TAG_USERNAME);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //Toast.makeText(Viewbidan.this, TAG_USERNAME, Toast.LENGTH_SHORT).show();
         // menghubungkan variablel pada layout dan pada java
 
         swipe   = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
