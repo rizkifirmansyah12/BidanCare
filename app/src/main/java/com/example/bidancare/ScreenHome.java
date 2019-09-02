@@ -60,4 +60,10 @@ public class ScreenHome extends AppCompatActivity {
         finish();
         startActivity(intent);
     }
+
+    public void changeschedule(View view) {
+        Intent intent = new Intent(ScreenHome.this, ChangeSchedule.class);
+        finish();
+        startActivity(intent);
+    }
 }

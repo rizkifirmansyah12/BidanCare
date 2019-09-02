@@ -17,22 +17,22 @@ public class ModelDataBidans {
     @Expose
     public String alamat_praktek;
 
-    @SerializedName("Bidan Wilayah")
+    @SerializedName("bidan_wilayah")
     @Expose
     public String bidan_wilayah;
 
-    @SerializedName("verifkasi")
+    @SerializedName("verifikasi")
     @Expose
-    public String verifkasi;
+    public String verifikasi;
 
-    public static final String id_user = "ID_USER";
+    public static final String id_login = "id_login";
 
-    public ModelDataBidans(String nama_bidan, String alamat_bidan, String alamat_praktek, String bidan_wilayah, String verifkasi) {
+    public ModelDataBidans(String nama_bidan, String alamat_bidan, String alamat_praktek, String bidan_wilayah, String verifikasi) {
         this.nama_bidan = nama_bidan;
         this.alamat_bidan = alamat_bidan;
         this.alamat_praktek = alamat_praktek;
         this.bidan_wilayah = bidan_wilayah;
-        this.verifkasi= verifkasi;
+        this.verifikasi= verifikasi;
     }
 
     public String getNama_bidan() {
@@ -68,11 +68,11 @@ public class ModelDataBidans {
     }
 
     public String getverifkasi() {
-        return verifkasi;
+        return verifikasi;
     }
 
-    public void setverifkasi(String verifkasi) {
-        this.verifkasi = verifkasi;
+    public void setverifikasi(String verifikasi) {
+        this.verifikasi = verifikasi;
     }
 
 }

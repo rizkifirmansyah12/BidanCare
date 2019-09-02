@@ -11,4 +11,6 @@
     <string name="user">1</string>
     <string name="bidan">2</string>
     <string name="admin">3</string>
+    <string name="belum_verifikasi">Belum</string>
+    <string name="verifikasi">Sudah</string>
 </resources>

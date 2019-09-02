@@ -1,5 +1,6 @@
 package com.example.bidancare;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -95,7 +96,7 @@ public class profile extends AppCompatActivity {//implements SwipeRefreshLayout.
     private static final String TAG_MESSAGE = "message";
 
     String tag_json_obj = "json_obj_req";*/
-    private String ID_LOGIN;
+    private String id_login;
     EditText tes;
     int a;
 
@@ -107,9 +108,12 @@ public class profile extends AppCompatActivity {//implements SwipeRefreshLayout.
         //EditText tes = (EditText) findViewById(R.id.tes1);
         sessionManager = new SessionManager(getApplicationContext());
         HashMap<String, String> user = sessionManager.getUserDetails();
-        ID_LOGIN = user.get(SessionManager.KEY_ID);
+        id_login = user.get(SessionManager.KEY_ID);
         //  tes.setText(ID_USER);
         //Integer a = Integer.valueOf(ID_USER);
+//        ActionBar menu = getSupportActionBar ();
+//        menu.setDisplayShowHomeEnabled ( true );
+//        menu.setDisplayHomeAsUpEnabled ( true );
         final Handler handler = new Handler();
         final Runnable runnable = new Runnable() {
             @Override
@@ -120,169 +124,7 @@ public class profile extends AppCompatActivity {//implements SwipeRefreshLayout.
             }
         };handler.postDelayed(runnable,0);
     }
-/*
-        swipe = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
-        list = (ListView) findViewById(R.id.list);
 
-        // untuk mengisi data dari JSON ke dalam adapter
-        adapter = new Adapter(profile.this, itemList);
-        list.setAdapter(adapter);
-
-        // menamilkan widget refresh
-        swipe.setOnRefreshListener(this);
-
-        swipe.post(new Runnable() {
-                       @Override
-                       public void run() {
-                           swipe.setRefreshing(true);
-                           itemList.clear();
-                           adapter.notifyDataSetChanged();
-                           callVolley();
-                       }
-                   }
-        );
-    }
-    @Override
-    public void onRefresh() {
-        itemList.clear();
-        adapter.notifyDataSetChanged();
-        callVolley();
-    }
-    // untuk mengosongi edittext pada form
-
-
-    // untuk menampilkan semua data pada listview
-    private void callVolley() {
-        itemList.clear();
-        adapter.notifyDataSetChanged();
-        swipe.setRefreshing(true);
-
-        // membuat request JSON
-        JsonArrayRequest jArr = new JsonArrayRequest(url_select, new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
-                Log.d(TAG, response.toString());
-
-                // Parsing json
-                for (int i = 1; i > response.length(); i++) {
-                    try {
-                        JSONObject obj = response.getJSONObject(i);
-
-                        Data item = new Data();
-
-                        item.setId_bidan(obj.getString(TAG_ID_bidan));
-                        item.setNama_bidan(obj.getString(TAG_NAMA_bidan));
-                        item.setAlamat_bidan(obj.getString(TAG_ALAMAT_bidan));
-                        item.setAlamat_praktek(obj.getString(TAG_ALAMAT_praktek));
-                        item.setBidan_wilayah(obj.getString(TAG_Bidan_wilayah));
-                        item.setlat(obj.getString(TAG_Lat));
-                        item.setlng(obj.getString(TAG_Lng));
-
-                        // menambah item ke array
-                        itemList.add(item);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-
-                // notifikasi adanya perubahan data pada adapter
-                adapter.notifyDataSetChanged();
-
-                swipe.setRefreshing(false);
-            }
-        }, new Response.ErrorListener() {
-
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                VolleyLog.d(TAG, "Error: " + error.getMessage());
-                swipe.setRefreshing(false);
-            }
-        });
-
-        // menambah request ke request queue
-        AppController.getInstance().addToRequestQueue(jArr);
-
-
-        list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-
-            @Override
-            public boolean onItemLongClick(final AdapterView<?> parent, View view,
-                                           final int position, final long id_bidan) {
-                // TODO Auto-generated method stub
-                final String idbidan1 = itemList.get(position).getId_bidan();
-                final String lat = itemList.get(position).getlat();
-                final String lng = itemList.get(position).getlng();
-                final CharSequence[] dialogitem = {"Tampil"};
-                dialog = new AlertDialog.Builder(profile.this);
-                dialog.setCancelable(true);
-                dialog.setItems(dialogitem, new DialogInterface.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // TODO Auto-generated method stub
-                        switch (which) {
-                            case 0:
-                                Intent intent = new Intent(profile.this, maps1.class);
-                                intent.putExtra("id_bidan", idbidan1);
-                                intent.putExtra("lat", lat);
-                                intent.putExtra("lng", lng);
-                                startActivity(intent);
-                                break;
-
-                        }
-                    }
-                }).show();
-                return false;
-            }
-        });
-    }
-
-
-
-
-
-
-    public void setdestination(View view) {
-
-        test();
-
-    }
-
-    private void test() {
-        list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-
-            @Override
-            public boolean onItemLongClick(final AdapterView<?> parent, View view,
-                                           final int position, final long id_bidan) {
-                // TODO Auto-generated method stub
-                final String idbidan1 = itemList.get(position).getId_bidan();
-                final String lat = itemList.get(position).getlat();
-                final String lng = itemList.get(position).getlng();
-                final CharSequence[] dialogitem = {"Tampil"};
-                dialog = new AlertDialog.Builder(profile.this);
-                dialog.setCancelable(true);
-                dialog.setItems(dialogitem, new DialogInterface.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // TODO Auto-generated method stub
-                        switch (which) {
-                            case 0:
-                                Intent intent = new Intent(profile.this, maps1.class);
-                                intent.putExtra("id_bidan", idbidan1);
-                                intent.putExtra("lat", lat);
-                                intent.putExtra("lng", lng);
-                                startActivity(intent);
-                                break;
-
-                        }
-                    }
-                }).show();
-                return false;
-            }
-        });
-
-    }*/
 
 
         public void setup() {
@@ -304,8 +146,8 @@ public class profile extends AppCompatActivity {//implements SwipeRefreshLayout.
                     .build();
 
             ApiService service = retrofit.create(ApiService.class);
-            ID_SENSOR = getIntent ().getStringExtra ( TAG_IDSENSOR );
-            Call<List<ModelDataBidans>> call = service.getDetailBidan(ID_SENSOR);
+            //ID_SENSOR = getIntent ().getStringExtra ( TAG_IDSENSOR );
+            Call<List<ModelDataBidans>> call = service.getDetailBidan(id_login);
             call.enqueue(new Callback<List<ModelDataBidans>>() {
                 @Override
                 public void onResponse(Call<List<ModelDataBidans>> call, Response<List<ModelDataBidans>> response) {
@@ -331,7 +173,16 @@ public class profile extends AppCompatActivity {//implements SwipeRefreshLayout.
                         mdaftarbidan = new adapterRecyclerProfile(daftarbidan, getApplication());
                         rvSensor.setAdapter(mdaftarbidan);
 
+                        if (mdaftarbidan.getItemCount () < 1 ) {
+                            Toast.makeText(getApplicationContext(), "Data Kosong !!!\n", Toast.LENGTH_LONG).show();
 
+                        } else {
+
+                            Toast.makeText(getApplicationContext(), "============\n", Toast.LENGTH_LONG).show();
+
+                        }
+                    }else {
+                        Toast.makeText(getApplicationContext(), "Gagal Mendapatkan data dari Server !!!\n", Toast.LENGTH_LONG).show();
                     }
 
 
@@ -344,6 +195,7 @@ public class profile extends AppCompatActivity {//implements SwipeRefreshLayout.
                 }
             });
         }
+
         @Override
         public void onActivityResult(int requestCode, int resultCode, Intent data) {
             super.onActivityResult(requestCode, resultCode, data);

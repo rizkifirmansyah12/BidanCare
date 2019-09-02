@@ -194,10 +194,5 @@ public class sign_admin_user extends AppCompatActivity {
             pDialog.dismiss();
     }
 
-    @Override
-    public void onBackPressed() {
-        intent = new Intent(sign_admin_user.this, login_admin.class);
-        finish();
-        startActivity(intent);
-    }
+
 }

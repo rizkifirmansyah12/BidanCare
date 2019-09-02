@@ -46,7 +46,9 @@ public class screen_home2 extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void listbidan(View view) {
+
+
+    public void verifikasi(View view) {
         startActivity(new Intent(screen_home2.this, Viewbidan.class));
     }
 }
