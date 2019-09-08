@@ -34,27 +34,29 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <Button
-            android:id="@+id/btn_register"
+        <!--<Button
+            android:id="@+id/btn_update"
             android:textColor="#FFF"
             android:background="@drawable/rec_gradient"
             android:layout_marginTop="15dp"
             android:textAllCaps="false"
-            android:text="Register"
+            android:text="Update Data"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <EditText
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            />-->
+       <!-- <EditText
             android:id="@+id/tes1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text=""/>
+            android:text=""/>-->
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/RecyclerView_Bidan"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scrollbars="vertical" />
-        <include layout="@layout/item_profile"/>
+        <!--<include layout="@layout/item_profile"/>-->
    <!--     <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

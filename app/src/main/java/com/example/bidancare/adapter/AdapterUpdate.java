@@ -13,12 +13,12 @@ import com.example.bidancare.data.Data;
 
 import java.util.List;
 
-public class Adapter extends BaseAdapter {
+public class AdapterUpdate extends BaseAdapter {
     private Activity activity;
     private LayoutInflater inflater;
     private List<Data> items;
 
-    public Adapter(Activity activity, List<Data> items) {
+    public AdapterUpdate(Activity activity, List<Data> items) {
         this.activity = activity;
         this.items = items;
     }
@@ -63,7 +63,7 @@ public class Adapter extends BaseAdapter {
         alamat_bidan.setText("Alamat Bidan = "+data.getAlamat_bidan());
         alamat_praktek.setText("Alamat Praktek = "+data.getAlamat_praktek());
         bidan_wilayah.setText("Bidan Wilayah = "+data.getBidan_wilayah());
-       opsi.setText("Buka / Tutup = "+data.getopsi());
+        opsi.setText("Buka / Tutup = "+data.getopsi());
 
         return convertView;
     }

@@ -41,7 +41,7 @@ public class SessionManager {
     }
 
     public void checkLogin(){
-        if (!this.is_login()){
+        if (!this.isLoggedIn()){
             Intent i = new Intent(context, loginVer2.class);
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -54,17 +54,14 @@ public class SessionManager {
         }
     }
 
-    private boolean is_login() {
+    public boolean isLoggedIn() {
         return pref.getBoolean(IS_LOGIN, false);
     }
 
-    public void logout(){
+    public void logoutUser(){
         editor.clear();
         editor.commit();
-        Intent i = new Intent(context, loginVer2.class);
-        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        context.startActivity(i);
+
     }
 
     public HashMap<String, String> getUserDetails(){

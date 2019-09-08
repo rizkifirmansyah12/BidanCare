@@ -92,14 +92,32 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/belum_verifikasi"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:textColor="#fff"/>
 
+            <TextView
+                android:id="@+id/tvbuka"
+                android:layout_width="82dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_toLeftOf="@id/rd1"
+                android:text="Belum Verifikasi"
+                android:textSize="17dip" />
             <RadioButton
                 android:id="@+id/rd2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="18dp"
-                android:text="@string/verifikasi" />
+                android:text="@string/verifikasi"
+                android:textColor="#fff"/>
+            <TextView
+                android:id="@+id/tvtutup"
+                android:layout_width="82dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Sudah Verifikasi"
+                android:layout_toLeftOf="@id/rd2"
+                android:textSize="17dip"/>
         </RadioGroup>
         <Button
             android:id="@+id/btn_verif"
@@ -118,7 +136,8 @@
             android:id="@+id/btn_back"
             android:text="Back"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:onClick="back"/>
     </LinearLayout>
 
     <ImageView

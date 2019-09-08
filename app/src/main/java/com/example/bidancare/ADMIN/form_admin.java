@@ -29,6 +29,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.example.bidancare.Manager.SessionManager;
 import com.example.bidancare.R;
 import com.example.bidancare.Server;
+import com.example.bidancare.USER.Home_user;
+import com.example.bidancare.USER.maps1;
 import com.example.bidancare.adapter.Adapter;
 import com.example.bidancare.app.AppController;
 import com.example.bidancare.data.Data;
@@ -52,7 +54,6 @@ public class form_admin extends AppCompatActivity {
     ConnectivityManager conMgr;
     private static final String TAG = form_admin.class.getSimpleName();
 
-   ;
 
     private static String url_update     = Server.URL + "update_verif.php";
 
@@ -199,5 +200,17 @@ public class form_admin extends AppCompatActivity {
     private void hideDialog() {
         if (pDialog.isShowing())
             pDialog.dismiss();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(form_admin.this, Viewbidan.class));
+
+    }
+
+    public void back(View view) {
+        startActivity(new Intent(form_admin.this, Viewbidan.class));
+
     }
 }

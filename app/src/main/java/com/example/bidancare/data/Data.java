@@ -2,12 +2,12 @@ package com.example.bidancare.data;
 
 public class Data {
 
-        private String id, id_bidan, nama_bidan, alamat_bidan, alamat_praktek, bidan_wilayah,verifkasi,lat,lng;
+        private String id, id_bidan, nama_bidan, alamat_bidan, alamat_praktek, bidan_wilayah,verifkasi,lat,lng,opsi;
 
         public Data() {
         }
 
-        public Data(String id, String id_bidan, String nama_bidan, String alamat_bidan, String alamat_praktek, String bidan_wilayah, String verifikasi, String lat, String lng) {
+        public Data(String id, String id_bidan, String nama_bidan, String alamat_bidan, String alamat_praktek, String bidan_wilayah, String verifikasi, String lat, String lng, String opsi) {
             this.id = id;
             this.id_bidan = id_bidan;
             this.nama_bidan = nama_bidan;
@@ -17,6 +17,7 @@ public class Data {
             this.verifkasi=verifikasi;
             this.lat = lat;
             this.lng=lng;
+            this.opsi=opsi;
         }
 
         public String getId_bidan() {
@@ -83,5 +84,14 @@ public class Data {
         this.lng = lng;
     }
 
+    public String getopsi() {
+        return opsi;
     }
+
+    public void setopsi(String opsi) {
+        this.opsi = opsi;
+    }
+
+
+}
 

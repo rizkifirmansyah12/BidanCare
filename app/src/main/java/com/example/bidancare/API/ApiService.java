@@ -28,8 +28,8 @@ public interface ApiService {
 
 
 
-    @GET("lihat_data_sensor_dht_notifikasi.php")
-    Call<List<ModelDataBidans>> getDetailSensorDHTNotifikasi(@Query("id_sensor") String id_sensor);
+    /*@GET("lihat_data_sensor_dht_notifikasi.php")
+    Call<List<ModelDataBidans>> getDetailSensorDHTNotifikasi(@Query("id_sensor") String id_sensor);*/
 
 
 //    @GET("single_data.php")

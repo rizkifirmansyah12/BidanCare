@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="?android:attr/listPreferredItemHeight"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="10dip">
-
-
-
         <TextView
             android:id="@+id/id_bidan"
             android:layout_width="wrap_content"
@@ -14,34 +11,41 @@
             android:visibility="gone"/>
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="Nama Bidan = "/>
-
-        <TextView
             android:id="@+id/nama_bidan"
-            android:layout_marginBottom="10dp"
-            android:hint="Nama Bidan"
-            android:textStyle="bold"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="Nama Bidan = "
+            android:layout_marginBottom="10dp"/>
+
+        <!--<TextView-->
+            <!--android:id="@+id/nama_bidan"-->
+            <!--android:layout_marginBottom="10dp"-->
+            <!--android:layout_toRightOf="@id/tv1"-->
+            <!--android:hint="Nama Bidan"-->
+            <!--android:textStyle="bold"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content" />-->
 
         <TextView
             android:layout_marginBottom="10dp"
             android:id="@+id/alamat_bidan"
+
+            android:layout_below="@id/nama_bidan"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="Alamat Bidan ="/>
 
         <TextView
             android:id="@+id/alamat_praktek"
             android:layout_marginBottom="10dp"
-            android:textStyle="bold"
+            android:layout_below="@id/alamat_bidan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <TextView
             android:layout_marginBottom="10dp"
             android:id="@+id/bidan_wilayah"
+            android:layout_below="@id/alamat_praktek"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -49,7 +53,9 @@
         <TextView
             android:layout_marginBottom="10dp"
             android:id="@+id/verifikasi"
+            android:layout_below="@id/bidan_wilayah"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-</LinearLayout>
+</RelativeLayout>

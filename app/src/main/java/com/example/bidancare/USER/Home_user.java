@@ -20,10 +20,13 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.example.bidancare.ChoiceLog;
 import com.example.bidancare.R;
 import com.example.bidancare.adapter.Adapter;
 import com.example.bidancare.app.AppController;
 import com.example.bidancare.data.Data;
+import com.example.bidancare.screenHomeuser;
+import com.example.bidancare.sign_admin_user;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -55,6 +58,7 @@ public class Home_user extends AppCompatActivity implements SwipeRefreshLayout.O
     public static final String TAG_Bidan_wilayah = "bidan_wilayah";
     public static final String TAG_Lat = "lat";
     public static final String TAG_Lng = "lng";
+    public static final String TAG_Opsi = "opsi";
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
 
@@ -144,6 +148,7 @@ public class Home_user extends AppCompatActivity implements SwipeRefreshLayout.O
                         item.setBidan_wilayah(obj.getString(TAG_Bidan_wilayah));
                         item.setlat(obj.getString(TAG_Lat));
                         item.setlng(obj.getString(TAG_Lng));
+                        item.setopsi(obj.getString(TAG_Opsi));
 
                         // menambah item ke array
                         itemList.add(item);
@@ -248,6 +253,12 @@ public class Home_user extends AppCompatActivity implements SwipeRefreshLayout.O
                 return false;
             }
         });
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(Home_user.this, screenHomeuser.class));
+
     }
 }
 

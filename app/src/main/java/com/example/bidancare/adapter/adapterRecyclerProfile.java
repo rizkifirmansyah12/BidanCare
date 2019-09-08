@@ -42,11 +42,11 @@ public class adapterRecyclerProfile extends RecyclerView.Adapter<adapterRecycler
 
         //holder.tvSensorName.setText("Sensor Name : " + user.getName() +"\n" +
         //"Sensor Age : " + user.getAge());
-        holder.nama_bidan.setText(user.getNama_bidan ());
-        holder.alamat_bidan.setText(user.getAlamat_bidan ());
-        holder.alamat_praktek.setText(user.getAlamat_praktek ());
-        holder.bidan_wilayah.setText(user.getBidan_wilayah ());
-        holder.verifikasi.setText(user.getverifkasi());
+        holder.nama_bidan.setText("Nama Bidan = "+user.getNama_bidan ());
+        holder.alamat_bidan.setText("Alamat Bidan = "+user.getAlamat_bidan ());
+        holder.alamat_praktek.setText("Alamat praktek = "+user.getAlamat_praktek ());
+        holder.bidan_wilayah.setText("Bidan Wilayah = "+user.getBidan_wilayah ());
+        holder.verifikasi.setText("Verifikasi = "+user.getverifkasi());
     }
 
     @Override

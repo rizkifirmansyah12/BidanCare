@@ -48,50 +48,83 @@
             android:paddingTop="10dip"
             android:textSize="17dip"/>
         <!-- Input Name -->
-        <TimePicker android:id="@+id/TP_tutup"
+        <EditText
+            android:id="@+id/txt_jam"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:editable="false"
+            android:focusable="false"
+            android:hint="Jam" />
+        <!-- Price Label -->
+       <!-- <TextView
+            android:id="@+id/outtp1"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dip"
-            android:layout_marginBottom="15dip"
-            android:singleLine="true"/>
-        <!-- Price Label -->
+            android:text="OUT"
+            android:paddingLeft="10dip"
+            android:paddingRight="10dip"
+            android:paddingTop="10dip"
+            android:textSize="17dip"/>-->
         <TextView android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Verifikasi"
+            android:text="Opsi"
             android:paddingLeft="10dip"
             android:paddingRight="10dip"
             android:paddingTop="10dip"
             android:textSize="17dip"/>
+
+
         <!-- Input description -->
-        <RadioGroup
-            android:id="@+id/rdverifikasi"
+       <RadioGroup
+            android:id="@+id/rdopsi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <RadioButton
-                android:id="@+id/rd1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/belum_verifikasi"
-                android:layout_gravity="center"/>
+           <RadioButton
+               android:id="@+id/rd1"
+               android:layout_width="56dp"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center"
+               android:paddingLeft="5dp"
+               android:text="@string/buka"
+               android:textColor="#fff" />
+           <TextView
+               android:id="@+id/tvbuka"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Buka"
+               android:layout_toLeftOf="@id/rd1"
+               android:layout_gravity="center"
+               android:textSize="17dip"/>
 
             <RadioButton
                 android:id="@+id/rd2"
-                android:layout_width="wrap_content"
+                android:layout_width="56dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="18dp"
-                android:text="@string/verifikasi" />
+                android:layout_gravity="center"
+                android:text="@string/tutup"
+                android:textColor="#fff"/>
+           <TextView
+               android:id="@+id/tvtutup"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center"
+               android:text="Tutup"
+               android:layout_toLeftOf="@id/rd2"
+               android:textSize="17dip"/>
         </RadioGroup>
         <Button
-            android:id="@+id/btn_verif"
+            android:id="@+id/btn_change"
             android:textColor="#FFF"
             android:background="@drawable/rec_gradient"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="10dp"
             android:textAllCaps="false"
-            android:text="Verifikasi"
+            android:text="Update Jadwal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
 
@@ -106,12 +139,5 @@
         android:layout_width="70dp"
         android:layout_height="70dp" />
 
-    <TextView
-        android:textSize="20sp"
-        android:textColor="#FFF"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/imageVIew"
-        android:text="Login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+
 </RelativeLayout>

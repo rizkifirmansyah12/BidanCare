@@ -62,40 +62,10 @@ public class profile extends AppCompatActivity {//implements SwipeRefreshLayout.
     private RecyclerView rvSensor;
     private List<ModelDataBidans> daftarbidan;
     private adapterRecyclerProfile mdaftarbidan;
-    public static final String TAG_IDSENSOR = "id";
-    String ID_SENSOR;
+    public static final String TAG_IDSENSOR = "1";
+    //String ID_SENSOR;
 
-/*
-    Toolbar toolbar;
-    ListView list;
-    SwipeRefreshLayout swipe;
-    List<Data> itemList = new ArrayList<Data>();
-    Adapter adapter;
-    int success;
-    AlertDialog.Builder dialog;
-    LayoutInflater inflater;
-    View dialogView;
-    String lat, lng;
-    SharedPreferences sharedpreferences;
-    String etusername;
-    String id_login;*/
-
-  /*  private static final String TAG = Home_user.class.getSimpleName();
-
-
-    private static String url_select = "http://192.168.8.102/bidancare/api/select.php";
-
-    public static final String TAG_ID_bidan = "id_bidan";
-    public static final String TAG_NAMA_bidan = "nama_bidan";
-    public static final String TAG_ALAMAT_bidan = "alamat_bidan";
-    public static final String TAG_ALAMAT_praktek = "alamat_praktek";
-    public static final String TAG_Bidan_wilayah = "bidan_wilayah";
-    public static final String TAG_Lat = "lat";
-    public static final String TAG_Lng = "lng";
-    private static final String TAG_SUCCESS = "success";
-    private static final String TAG_MESSAGE = "message";
-
-    String tag_json_obj = "json_obj_req";*/
+  public static final String TAG_ID_bidan = "id_bidan";
     private String id_login;
     EditText tes;
     int a;
@@ -146,7 +116,8 @@ public class profile extends AppCompatActivity {//implements SwipeRefreshLayout.
                     .build();
 
             ApiService service = retrofit.create(ApiService.class);
-            //ID_SENSOR = getIntent ().getStringExtra ( TAG_IDSENSOR );
+            /*ID_SENSOR = getIntent ().getStringExtra ( TAG_IDSENSOR );*/
+            //id_login=getIntent().getStringExtra(TAG_ID_bidan);
             Call<List<ModelDataBidans>> call = service.getDetailBidan(id_login);
             call.enqueue(new Callback<List<ModelDataBidans>>() {
                 @Override
@@ -178,7 +149,7 @@ public class profile extends AppCompatActivity {//implements SwipeRefreshLayout.
 
                         } else {
 
-                            Toast.makeText(getApplicationContext(), "============\n", Toast.LENGTH_LONG).show();
+                            //Toast.makeText(getApplicationContext(), "============\n", Toast.LENGTH_LONG).show();
 
                         }
                     }else {
@@ -190,7 +161,7 @@ public class profile extends AppCompatActivity {//implements SwipeRefreshLayout.
 
                 @Override
                 public void onFailure(Call<List<ModelDataBidans>> call, Throwable t) {
-                    Toast.makeText(getApplicationContext(), "Gagal Mendapatkan data dari Server !!!\n", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Gagal Mendapatkan data dari Server 1 !!!\n", Toast.LENGTH_LONG).show();
 
                 }
             });
@@ -204,5 +175,10 @@ public class profile extends AppCompatActivity {//implements SwipeRefreshLayout.
                 setup();
             }
         }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(profile.this, ScreenHome.class));
 
+    }
 }

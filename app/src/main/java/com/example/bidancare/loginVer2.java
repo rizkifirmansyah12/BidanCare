@@ -94,14 +94,6 @@ public class loginVer2 extends AppCompatActivity {
         password = sharedpreferences.getString ( TAG_PASSWORD,null );
         username = sharedpreferences.getString(TAG_USERNAME, null);
 
-       /* if (session) {
-            Intent intent = new Intent(loginVer2.this, Home.class);
-            intent.putExtra(TAG_USERNAME, username);
-            finish();
-            startActivity(intent);
-        }*/
-
-
         btlogin.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -166,12 +158,7 @@ public class loginVer2 extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
 
                         // menyimpan login ke session
-                        /*SharedPreferences.Editor editor = sharedpreferences.edit();
-                        editor.putBoolean(session_status, true);
 
-                        editor.putString(TAG_USERNAME, username);
-                        //editor.putString(TAG_Hakakses, hakakses);
-                        editor.commit();*/
                         sessionManager.createLoginSession(id,username,password);
 
                         // Memanggil main activity
@@ -192,12 +179,7 @@ public class loginVer2 extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
 
                             // menyimpan login ke session
-                           /* SharedPreferences.Editor editor = sharedpreferences.edit();
-                            editor.putBoolean(session_status, true);
 
-                            editor.putString(TAG_USERNAME, username);
-                            //editor.putString(TAG_Hakakses, hakakses);
-                            editor.commit();*/
                             sessionManager.createLoginSession(id,username,password);
 
                             // Memanggil main activity
@@ -218,12 +200,7 @@ public class loginVer2 extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
 
                             // menyimpan login ke session
-                            /*SharedPreferences.Editor editor = sharedpreferences.edit();
-                            editor.putBoolean(session_status, true);
 
-                            editor.putString(TAG_USERNAME, username);
-                            //editor.putString(TAG_Hakakses, hakakses);
-                            editor.commit();*/
                             sessionManager.createLoginSession(id,username,password);
 
                             // Memanggil main activity

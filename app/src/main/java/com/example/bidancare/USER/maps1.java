@@ -2,11 +2,15 @@ package com.example.bidancare.USER;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -14,11 +18,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
-import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.example.bidancare.ADMIN.Home_admin;
+import com.example.bidancare.API.ApiService;
+import com.example.bidancare.ChoiceLog;
+import com.example.bidancare.Home;
 import com.example.bidancare.R;
+import com.example.bidancare.Server;
+import com.example.bidancare.adapter.adapterRecyclerProfile;
 import com.example.bidancare.app.AppController;
+import com.example.bidancare.model.ModelDataBidans;
+import com.example.bidancare.sign_admin_user;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
@@ -32,34 +43,28 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class maps1 extends AppCompatActivity/*FragmentActivity implements OnMapReadyCallback*/ {
     TextView idbidan,lat,lng;
 
-   /* MapFragment mapFragment;
-    GoogleMap gMap;
-    MarkerOptions markerOptions = new MarkerOptions();
-    CameraPosition cameraPosition;
-    LatLng center, latLng;
-    String title;
-    TextView idbidan,lat,lng;
-
-    public static final String TAG_ID_bidan       = "id_bidan";
-    public static final String TAG_NAMA_bidan     = "nama_bidan";
-    public static final String LAT = "lat";
-    public static final String LNG = "lng";
-
-    private String url = "http://192.168.8.102/bidancare/api/mapstest1.php";
-
-    String tag_json_obj = "json_obj_req";*/
-
-
+    private RecyclerView rvSensor;
+    private List<ModelDataBidans> daftarbidan;
+    private adapterRecyclerProfile mdaftarbidan;
     /*Deklarasi variable*/
     Button btn_navigasi;
     String goolgeMap = "com.google.android.apps.maps"; // identitas package aplikasi google masps android
     Uri gmmIntentUri;
     Intent mapIntent;
     /*String masjid_agung_demak = "-6.894649906672214,110.63718136399984";*/
-    String a,b;
+    String a,b,d;
     String c;
     // koordinat Masjid Agung Demak
     /*Deklarasi variable*/
@@ -80,91 +85,21 @@ public class maps1 extends AppCompatActivity/*FragmentActivity implements OnMapR
         lng.setText(TempHolder2);
         a= TempHolder1;
         b = TempHolder2;
+        d = TempHolder;
 
 
         c=  a+','+b;
         test.setText(c);
-/*
-        TextView idbidan = (TextView) findViewById(R.id.id_bidan);
-        TextView lat = (TextView) findViewById(R.id.lat);
-        TextView lng = (TextView) findViewById(R.id.lng);
-        String TempHolder = getIntent().getStringExtra("id_bidan");
-        idbidan.setText(TempHolder);
-        String TempHolder1 = getIntent().getStringExtra("lat");
-        lat.setText(TempHolder1);
-        String TempHolder2 = getIntent().getStringExtra("lng");
-        lng.setText(TempHolder2);
 
-        mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
-    }
+        final Handler handler = new Handler();
+        final Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
 
-
-        @Override
-        public void onMapReady(GoogleMap googleMap) {
-            gMap = googleMap;
-
-            // Mengarahkan ke alun-alun Demak
-            center = new LatLng(-6.894796, 110.638413);
-            cameraPosition = new CameraPosition.Builder().target(center).zoom(10).build();
-            googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-
-            getMarkers();
-        }
-
-        private void addMarker(LatLng latlng, final String title) {
-            markerOptions.position(latlng);
-            markerOptions.title(title);
-            gMap.addMarker(markerOptions);
-
-            gMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
-                @Override
-                public void onInfoWindowClick(Marker marker) {
-                    Toast.makeText(getApplicationContext(), marker.getTitle(), Toast.LENGTH_SHORT).show();
-                }
-            });
-        }
-
-        // Fungsi get JSON marker
-        private void getMarkers() {
-            StringRequest strReq = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
-
-                @Override
-                public void onResponse(String response) {
-                    Log.e("Response: ", response.toString());
-
-                    try {
-                        JSONObject jObj = new JSONObject(response);
-                        String getObject = jObj.getString("ModelDataBidans");
-                        JSONArray jsonArray = new JSONArray(getObject);
-
-                        for (int i = 0; i < jsonArray.length(); i++) {
-                            JSONObject jsonObject = jsonArray.getJSONObject(i);
-                            title = jsonObject.getString(TAG_NAMA_bidan);
-                            latLng = new LatLng(Double.parseDouble(jsonObject.getString(LAT)), Double.parseDouble(jsonObject.getString(LNG)));
-
-                            // Menambah data marker untuk di tampilkan ke google map
-                            addMarker(latLng, title);
-                        }
-
-                    } catch (JSONException e) {
-                        // JSON error
-                        e.printStackTrace();
-                    }
-
-                }
-            }, new Response.ErrorListener() {
-
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Log.e("Error: ", error.getMessage());
-                    Toast.makeText(maps1.this, error.getMessage(), Toast.LENGTH_LONG).show();
-                }
-            });
-
-
-            AppController.getInstance().addToRequestQueue(strReq, tag_json_obj);*/
-
+                setup();
+                handler.postDelayed(this,6000);//60 second delay
+            }
+        };handler.postDelayed(runnable,0);
 
         // menyamakan variable pada layout activity_main.xml
         btn_navigasi    = (Button) findViewById(R.id.btnNext);
@@ -193,5 +128,88 @@ public class maps1 extends AppCompatActivity/*FragmentActivity implements OnMapR
 
         });
     }
+    public void setup() {
+        //listview = (ListView) rootView.findViewById(R.id.listSensor);
+        rvSensor = (RecyclerView) findViewById(R.id.RecyclerView_Bidan);
+        daftarbidan = new ArrayList<>();
+        //passing to adapter
+        mdaftarbidan = new adapterRecyclerProfile(daftarbidan, getApplication ());
+        rvSensor.setLayoutManager(new LinearLayoutManager(getApplication()));
+        rvSensor.setItemAnimator(new DefaultItemAnimator());
+        rvSensor.setAdapter(mdaftarbidan);
+        mdaftarbidan.notifyDataSetChanged();
+        //listview.setOnItemClickListener ( SensorFragment.this );
+        //listview.setDividerHeight(0);
 
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(Server.URL)
+                .addConverterFactory( GsonConverterFactory.create())
+                .build();
+
+        ApiService service = retrofit.create(ApiService.class);
+        /*ID_SENSOR = getIntent ().getStringExtra ( TAG_IDSENSOR );*/
+        //id_login=getIntent().getStringExtra(TAG_ID_bidan);
+        Call<List<ModelDataBidans>> call = service.getDetailBidan(d);
+        call.enqueue(new Callback<List<ModelDataBidans>>() {
+            @Override
+            public void onResponse(Call<List<ModelDataBidans>> call, Response<List<ModelDataBidans>> response) {
+
+                if (response.isSuccessful()) {
+                    int jumlah = response.body().size();
+                    daftarbidan.clear();
+
+                    for (int i = 0; i < jumlah; i++) {
+
+                        ModelDataBidans data = new ModelDataBidans(
+                                response.body().get(i).getNama_bidan(),
+                                response.body().get(i).getAlamat_bidan(),
+                                response.body().get(i).getAlamat_praktek(),
+                                response.body().get(i).getBidan_wilayah(),
+                                response.body().get(i).getverifkasi()
+                        );
+                        daftarbidan.add(data);
+                        Log.d("RESPON", "onResponse: " + response.body().get(i).getNama_bidan());
+
+                    }
+                    rvSensor.setVisibility(View.VISIBLE);
+                    mdaftarbidan = new adapterRecyclerProfile(daftarbidan, getApplication());
+                    rvSensor.setAdapter(mdaftarbidan);
+
+                    if (mdaftarbidan.getItemCount () < 1 ) {
+                        Toast.makeText(getApplicationContext(), "Data Kosong !!!\n", Toast.LENGTH_LONG).show();
+
+                    } else {
+
+                        //Toast.makeText(getApplicationContext(), "============\n", Toast.LENGTH_LONG).show();
+
+                    }
+                }else {
+                    Toast.makeText(getApplicationContext(), "Gagal Mendapatkan data dari Server !!!\n", Toast.LENGTH_LONG).show();
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<List<ModelDataBidans>> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "Gagal Mendapatkan data dari Server 1 !!!\n", Toast.LENGTH_LONG).show();
+
+            }
+        });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            mdaftarbidan.clear();
+            setup();
+        }
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(maps1.this, Home_user.class));
+
+    }
 }

@@ -28,6 +28,7 @@ import com.example.bidancare.adapter.Adapter;
 import com.example.bidancare.app.AppController;
 import com.example.bidancare.data.Data;
 import com.example.bidancare.loginVer2;
+import com.example.bidancare.screen_home2;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -194,7 +195,12 @@ public class Viewbidan extends AppCompatActivity implements SwipeRefreshLayout.O
     private void tampil(final String idbidan){
         startActivity(new Intent(Viewbidan.this, form_admin.class));
     }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(Viewbidan.this, screen_home2.class));
 
+    }
 }
 
 

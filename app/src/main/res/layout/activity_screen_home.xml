@@ -94,12 +94,13 @@
                 </LinearLayout>
 
             </LinearLayout>
-            <ImageButton
-
+            <Button
+                android:id="@+id/btlogut"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:background="@drawable/logoutver2"
-                android:onClick="logout"/>
+                android:onClick="keluar"
+                />
         </LinearLayout>
 
     </RelativeLayout>
