@@ -29,8 +29,6 @@ import java.util.Map;
 
 public class sign_admin_user extends AppCompatActivity {
 
-    private RadioGroup radiogrup;
-    private RadioButton radioButtonNb;
     ProgressDialog pDialog;
     Button btn_register, btn_login;
     EditText txt_username, txt_password, txt_confirm_password;
@@ -53,7 +51,6 @@ public class sign_admin_user extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_admin);
 
-        radiogrup = (RadioGroup) findViewById(R.id.rdgrup);
 
         conMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         {
@@ -92,18 +89,11 @@ public class sign_admin_user extends AppCompatActivity {
                 String password = txt_password.getText().toString();
                 String confirm_password = txt_confirm_password.getText().toString();
 
-                //pilih radio button yang ada di radio button group
-                int selectedId = radiogrup.getCheckedRadioButtonId();
-
-                // mencari radio button
-                radioButtonNb = (RadioButton) findViewById(selectedId);
-
-                String hakakses = radioButtonNb.getText().toString();
 
                 if (conMgr.getActiveNetworkInfo() != null
                         && conMgr.getActiveNetworkInfo().isAvailable()
                         && conMgr.getActiveNetworkInfo().isConnected()) {
-                    checkRegister(username, password, confirm_password,hakakses);
+                    checkRegister(username, password, confirm_password);
                 } else {
                     Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_SHORT).show();
                 }
@@ -112,7 +102,7 @@ public class sign_admin_user extends AppCompatActivity {
 
     }
 
-    private void checkRegister(final String username, final String password, final String confirm_password, final String hakakses) {
+    private void checkRegister(final String username, final String password, final String confirm_password) {
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
         pDialog.setMessage("Register ...");
@@ -140,7 +130,6 @@ public class sign_admin_user extends AppCompatActivity {
                         txt_username.setText("");
                         txt_password.setText("");
                         txt_confirm_password.setText("");
-                        radioButtonNb.setText("");
 
                     } else {
                         Toast.makeText(getApplicationContext(),
@@ -173,7 +162,7 @@ public class sign_admin_user extends AppCompatActivity {
                 params.put("username", username);
                 params.put("password", password);
                 params.put("confirm_password", confirm_password);
-                params.put("id_grup",hakakses);
+
 
                 return params;
             }

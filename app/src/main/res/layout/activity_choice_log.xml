@@ -40,7 +40,7 @@
         android:textColor="#fff"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ADMINSTRATOR OR USER"
+        android:text="USER"
         android:onClick="admin"
         android:background="@drawable/rec_gradient_fb"/>
 </LinearLayout>
